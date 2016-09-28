@@ -6,8 +6,8 @@ import time
 NOTES = ['a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'a6', 'b6', 'c6', 'd6',
          'e6', 'f6', 'g6', 're']
 PITCHES = [-15, -13, -12, -10, -8, -7, -5, -3, -1, 0, 2, 4, 5, 7, 9, 11, 12, 14, 16, 17, 19]
-LENGTH_STRINGS = ['1', '2', '4', '8', '16', '32']
-LENGTHS = [4.0, 2.0, 1.0, 0.5, 0.25, 0.125]
+LENGTH_STRINGS = ['1', '1.', '2', '2.', '4', '4.', '8', '8.', '16', '16.', '32', '32.']
+LENGTHS = [4.0, 6.0, 2.0, 3.0, 1.0, 1.5, 0.5, 0.75, 0.25, 0.375, 0.125, 0.1875]
 for i in range(len(PITCHES)):
     PITCHES[i] += 0
 print(LENGTHS)
@@ -30,10 +30,13 @@ def create_sounds(audio_path, semitone_arr, length_arr):
 
 
 def play_note(sound_arr, pitch_index, length_index):
+    print(NOTES[pitch_index], PITCHES[pitch_index])
+    print(LENGTH_STRINGS[length_index], LENGTHS[length_index])
     sound_arr[pitch_index][length_index].play()
 
 
 def interpret_note(sound_arr, note_string):
+    print(note_string)
     pitch_index = NOTES.index(note_string[0:2])
     length_index = LENGTH_STRINGS.index(note_string[3:])
     if pitch_index == len(NOTES)-1:
